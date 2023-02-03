@@ -19,7 +19,7 @@ RSpec.describe LinkedList do
   it 'can list elements to string' do
   list = LinkedList.new
   list.append("doop")
-  expect(list.to_string).to eq ("doop")
+  expect(list.to_string).to eq("doop")
   end
 
   it 'can add a second node'do
