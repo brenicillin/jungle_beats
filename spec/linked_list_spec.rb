@@ -38,4 +38,13 @@ RSpec.describe LinkedList do
   list.prepend("dop")
   expect(list.to_string).to eq("dop plop suu")
   end
+
+  it 'can insert at specific position' do
+  list = LinkedList.new
+  list.append("plop")
+  list.append("suu")
+  list.prepend("dop")
+  list.insert(1, "woo")
+  require 'pry'; binding.pry
+  end
 end
