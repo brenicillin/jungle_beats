@@ -57,12 +57,12 @@ attr_reader :head
     end
     
     def find(position, number)
-      array = self.to_string.split(" ")
-      array[position..position + number - 1].join(" ")
+      array = self.to_string.split(" ") #calls the to_string method on the list and splits them with space
+      array[position..position + number - 1].join(" ") #creates an array that ranges from the position to the position minus 1, joins them separated by a space
     end
 
-    def includes?
-
+    def includes?(data)
+      self.to_string.include?(data)  #calls the to_string method on the list and checks for data within the string
     end
 
     def pop
