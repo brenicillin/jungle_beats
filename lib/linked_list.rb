@@ -42,6 +42,7 @@ attr_reader :head
       current_head = @head
       @head = Node.new(data)
       @head.next_node = current_head
+      data
     end
 
     def insert(position, data)
@@ -52,5 +53,6 @@ attr_reader :head
       new_node = Node.new(data)
       new_node.next_node = current_node.next_node
       current_node.next_node = new_node
+      data
       end
 end
