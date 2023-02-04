@@ -67,11 +67,11 @@ attr_reader :head
 
     def pop
       current_node = @head
-      while current_node.next_node.next_node
-        current_node = current_node.next_node
+      while current_node.next_node.next_node        #while able to call .next_node twice,
+        current_node = current_node.next_node     #cycle through nodes
       end
-      result = current_node.next_node.data
-      current_node.next_node = nil
-      result
+      result = current_node.next_node.data      #store next node's data in the result variable
+      current_node.next_node = nil              #set next node to equal nil, effectively erasing next node
+      result                                    #prints value saved in result to console
     end
 end
