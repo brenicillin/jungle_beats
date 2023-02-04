@@ -58,7 +58,7 @@ attr_reader :head
     
     def find(position, number)
       array = self.to_string.split(" ") #calls the to_string method on the list and splits them with space
-      array[position..position + number - 1].join(" ") #creates an array that ranges from the position to the position minus 1, joins them separated by a space
+      array[position..position + number - 1].join(" ") #creates an array that ranges from the position to the given number minus 1 position, joins them separated by a space
     end
 
     def includes?(data)
@@ -66,7 +66,12 @@ attr_reader :head
     end
 
     def pop
-
+      current_node = @head
+      while current_node.next_node.next_node
+        current_node = current_node.next_node
+      end
+      result = current_node.next_node.data
+      current_node.next_node = nil
+      result
     end
-      
 end
