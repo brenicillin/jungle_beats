@@ -58,7 +58,6 @@ RSpec.describe LinkedList do
     list.append("blop")
     list.insert(2, "shi")
     list.insert(3, "shu")
-    require 'pry'; binding.pry
     expect(list.to_string).to eq("deep woo shi shu blop")
     expect(list.find(2, 1)).to eq("shi")
     expect(list.find(1, 3)).to eq("woo shi shu")
@@ -73,5 +72,20 @@ RSpec.describe LinkedList do
     list.insert(3, "shu")
     expect(list.includes?("deep")).to eq true
     expect(list.includes?("dep")).to eq false
+  end
+
+  it 'can use pop method to delete last node' do
+    list = LinkedList.new
+    list.append("deep")
+    list.append("woo")
+    list.append("blop")
+    list.insert(2, "shi")
+    list.insert(3, "shu")
+    list.pop
+    expect(list.count).to eq(4)
+    expect(list.to_string).to eq("deep woo shi shu")
+    list.pop
+    expect(list.count).to eq (3)
+    expect(list.to_string).to eq("deep woo shi")
   end
 end
