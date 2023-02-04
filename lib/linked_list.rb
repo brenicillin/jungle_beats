@@ -56,8 +56,9 @@ attr_reader :head
       data
     end
     
-    def find
-
+    def find(position, number)
+      array = self.to_string.split(" ")
+      array[position..position + number - 1].join(" ")
     end
 
     def includes?
