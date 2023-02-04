@@ -29,5 +29,13 @@ RSpec.describe LinkedList do
   require 'pry'; binding.pry
   expect(list.count).to eq(2)
   expect(list.to_string).to eq("doop deep")
-end
+  end
+
+  it 'can prepend' do
+  list = LinkedList.new
+  list.append("plop")
+  list.append("suu")
+  list.prepend("dop")
+  expect(list.to_string).to eq("dop plop suu")
+  end
 end

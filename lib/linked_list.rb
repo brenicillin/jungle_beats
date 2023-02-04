@@ -36,5 +36,10 @@ attr_reader :head
           current_node = current_node.next_node
         end
         string.strip
-    end   
+    end
+    def prepend(data)
+      current_head = @head
+      @head = Node.new(data)
+      @head.next_node = current_head
+    end
 end
