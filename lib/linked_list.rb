@@ -1,13 +1,11 @@
 require './lib/node'
 
 class LinkedList
-attr_reader :head, :count
+attr_reader :head
   def initialize
   @head = nil
-  @count = 0
   end
     def append(data)
-      @count += 1
     if @head.nil?
         @head = Node.new(data)
     else
@@ -19,6 +17,16 @@ attr_reader :head, :count
         end
         return data
     end
+    
+    def count
+      count = 0
+        current_node = @head
+        until current_node.nil?
+          count += 1
+          current_node = current_node.next_node
+        end
+      count
+    end
   
     def to_string
       string = ""
@@ -27,6 +35,6 @@ attr_reader :head, :count
           string << "#{current_node.data} "
           current_node = current_node.next_node
         end
-      string.strip
+        string.strip
     end   
 end
