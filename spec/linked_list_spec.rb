@@ -26,6 +26,7 @@ RSpec.describe LinkedList do
   it 'can add a second node'do
   list = LinkedList.new
   list.append("doop")
+  expect(list.count).to eq(1)
   list.append("deep")
   expect(list.count).to eq(2)
   expect(list.to_string).to eq("doop deep")
@@ -82,6 +83,7 @@ RSpec.describe LinkedList do
     list.append("blop")
     list.insert(2, "shi")
     list.insert(3, "shu")
+    expect(list.count).to eq(5)
     list.pop
     expect(list.count).to eq(4)
     expect(list.to_string).to eq("deep woo shi shu")
