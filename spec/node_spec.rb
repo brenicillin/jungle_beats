@@ -1,7 +1,6 @@
 require 'rspec'
 require './lib/node'
 
-
 RSpec.describe Node do
 it 'exists' do
   node = Node.new("boop")
