@@ -15,7 +15,7 @@ attr_reader :head
         end
         current_node.next_node = Node.new(data)   #simultaneously creates a new node and adjusts current node's pointer
         end
-        return data     #return the data entered instead of entire node
+        data     #return the data entered instead of entire node
     end
     
     def count
