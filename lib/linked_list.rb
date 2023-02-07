@@ -5,17 +5,22 @@ attr_reader :head
   def initialize
   @head = nil
   end
+
     def append(data)
-    if @head.nil?                     #if head is not assigned,
-        @head = Node.new(data)        #head = new node
-    else                              #if head is assigned,
-        current_node = @head              #start at @head as current_node
-        until current_node.next_node.nil?   #until current_node.next_node is nil (there is no next node)
-            current_node = current_node.next_node   #cycle through the nodes
-        end
-        current_node.next_node = Node.new(data)   #simultaneously creates a new node and adjusts current node's pointer
-        end
-        data     #return the data entered instead of entire node
+      valid_sound = check_sound(data)
+      if valid_sound == true
+        if @head.nil?                     #if head is not assigned,
+          @head = Node.new(data)        #head = new node
+          else                              #if head is assigned,
+          current_node = @head              #start at @head as current_node
+          until current_node.next_node.nil?   #until current_node.next_node is nil (there is no next node)
+              current_node = current_node.next_node   #cycle through the nodes
+          end
+            current_node.next_node = Node.new(data)   #simultaneously creates a new node and adjusts current node's pointer
+          end
+        data    #return the data entered instead of entire node 
+      else "Error: Not a valid sound"
+      end
     end
     
     def count
@@ -39,21 +44,29 @@ attr_reader :head
     end
 
     def prepend(data)
-      current_head = @head    #stores the current head as a local variable
-      @head = Node.new(data)    #creates a new node using the data passed and assigns it as head
-      @head.next_node = current_head  #places the value stored in current_head as the new head's next.node
-      data    #returns the data passed as an argument to console
+      valid_sound = check_sound(data)
+      if valid_sound == true
+        current_head = @head    #stores the current head as a local variable
+        @head = Node.new(data)    #creates a new node using the data passed and assigns it as head
+        @head.next_node = current_head  #places the value stored in current_head as the new head's next.node
+        data    #returns the data passed as an argument to console
+      else "Error: Not a valid sound"
+     end
     end
 
     def insert(position, data)
-      current_node = @head     #begins the block at the @head
-      (position - 1).times do   #the integer passed at position minus 1 times,
-        current_node = current_node.next_node   #pass to the next node
+      valid_sound = check_sound(data)
+      if valid_sound == true
+        current_node = @head     #begins the block at the @head
+        (position - 1).times do   #the integer passed at position minus 1 times,
+          current_node = current_node.next_node   #pass to the next node
+        end
+        new_node = Node.new(data)   #create a new node object stored in new_node
+        new_node.next_node = current_node.next_node #the new node's next node will be the current node's next node
+        current_node.next_node = new_node   #and the current node's next node will be this new node
+        data
+      else "Error: Not a valid sound"
       end
-      new_node = Node.new(data)   #create a new node object stored in new_node
-      new_node.next_node = current_node.next_node #the new node's next node will be the current node's next node
-      current_node.next_node = new_node   #and the current node's next node will be this new node
-      data
     end
     
     def find(position, number)
@@ -73,5 +86,17 @@ attr_reader :head
       result = current_node.next_node.data      #store next node's data in the result variable
       current_node.next_node = nil              #set next node to equal nil, effectively erasing next node
       result                                    #prints value saved in result to console
+    end
+
+    def check_sound(data)
+      filename = "acceptable_sounds.txt"
+      valid_sound = false
+      file = File.open(filename)
+      File.foreach(filename) do |sound|
+        sound.chomp!
+        valid_sound = true if sound == data
+      end
+      file.close
+      valid_sound
     end
 end
