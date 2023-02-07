@@ -18,6 +18,6 @@ class JungleBeat
   end
 
   def play
-    `say -r #{speed} #{@list.to_string}`
+    `say -r 400 #{@list.to_string}`
   end
 end
